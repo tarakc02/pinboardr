@@ -1,0 +1,14 @@
+Package: pinboardr
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.0.0.9001
+Authors@R: person("Tarak", "Shah", email = "tarak_shah@berkeley.edu",
+                  role = c("aut", "cre"))
+Description: R client for the Pinboard API
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Imports: ratelimitr,
+    httr,
+    jsonlite
