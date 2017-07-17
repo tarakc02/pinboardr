@@ -30,5 +30,14 @@ pb_date <- function(date) {
 
     format(date, "%Y-%m-%d")
 }
+
 pb_url <- function(url) url
-pb_yn <- function(val) val
+pb_yn <- function(val) {
+    assert_that(is.logical(val))
+    ifelse(val, "yes", "no")
+}
+
+yn_tf <- function(yn) {
+    tf <- c(yes = TRUE, no = FALSE)
+    unname(tf[yn])
+}

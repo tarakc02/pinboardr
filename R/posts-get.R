@@ -1,3 +1,13 @@
+#' Get posts from a given date
+#'
+#' If no date or URL is given, the date of the most recent bookmark will be used.
+#'
+#' @param tags character vector of up to 3 tags to filter by
+#' @param date a \code{Date} to filter bookmarks
+#' @param url Only return the bookmark for this URL
+#' @param meta Include a change detection signature?
+#'
+#' @export
 get_posts <- function(
     tags = NULL,
     date = NULL,
@@ -9,7 +19,7 @@ get_posts <- function(
     taglist <- pb_tag(tags)
     date <- pb_date(date)
     url <- pb_url(url)
-    meta = pb_yn(meta)
+    meta <- pb_yn(meta)
 
     if (taglength(taglist) > 3) stop("Only 3 tags allowed")
 
@@ -27,7 +37,7 @@ get_posts <- function(
 }
 
 posts_get_process <- function(response) {
-    response_list <- posts_process(response)
+    response_list <- process(response)
     if (length(response_list) == 0L)
         response_df <- data.frame(
             href = character(),
@@ -43,8 +53,12 @@ posts_get_process <- function(response) {
         )
     else response_df <- response_list$posts
 
+    if (!"meta" %in% names(response_df))
+        response_df[["meta"]] <- ""
+
     response_df$time <- lubridate::ymd_hms(response_df$time)
     response_df$shared <- yn_tf(response_df$shared)
     response_df$toread <- yn_tf(response_df$toread)
-    structure(response, class = c("pinboard_posts", "tbl_df", "tbl", class(response)))
+
+    structure(response_df, class = c("pinboard_posts", "tbl_df", "tbl", class(response)))
 }
