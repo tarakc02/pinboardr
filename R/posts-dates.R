@@ -1,4 +1,4 @@
-post_dates <- function(tags, format = "json", auth_token = pinboard_token()) {
+post_dates <- function(tags, format = "json", auth_token = NULL) {
     taglist <- pb_tag(tags)
     if (taglength(taglist) > 3) stop("Only 3 tags allowed")
 
@@ -6,7 +6,7 @@ post_dates <- function(tags, format = "json", auth_token = pinboard_token()) {
         "dates",
         tag = taglist,
         format = format,
-        auth_token = structure(auth_token, class = "AsIs")
+        auth_token = auth_token
     )
     raw_response <- GET_1_3s(httr::build_url(geturl))
     post_dates_process(raw_response)

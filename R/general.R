@@ -3,8 +3,10 @@ path <- function(endpoint, verb) paste("v1", endpoint, verb, sep = "/")
 build_url <- function(endpoint, verb, ..., auth_token) {
     query <- list(...)
 
+    if (is.null(auth_token)) auth_token <- pinboard_token()
     query <- c(
         auth_token = auth_token,
+        format = "json",
         query
     )
 

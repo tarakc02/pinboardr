@@ -6,6 +6,7 @@
 #' @param date a \code{Date} to filter bookmarks
 #' @param url Only return the bookmark for this URL
 #' @param meta Include a change detection signature?
+#' @param auth_token authentication token
 #'
 #' @export
 get_posts <- function(
@@ -13,8 +14,7 @@ get_posts <- function(
     date = NULL,
     url = NULL,
     meta = TRUE,
-    format = "json",
-    auth_token = pinboard_token()
+    auth_token = NULL
 ) {
     taglist <- pb_tag(tags)
     date <- pb_date(date)
@@ -29,8 +29,7 @@ get_posts <- function(
         dt = date,
         url = url,
         meta = meta,
-        format = format,
-        auth_token = structure(auth_token, class = "AsIs")
+        auth_token = auth_token
     )
     raw_response <- GET_1_3s(httr::build_url(geturl))
     posts_get_process(raw_response)
