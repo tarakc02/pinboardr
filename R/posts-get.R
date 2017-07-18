@@ -60,5 +60,5 @@ posts_get_process <- function(response) {
     response_df$shared <- yn_tf(response_df$shared)
     response_df$toread <- yn_tf(response_df$toread)
 
-    structure(response_df, class = c("pinboard_posts", "tbl_df", "tbl", class(response)))
+    structure(response_df, class = c("pinboard_posts", "tbl_df", "tbl", class(response_df)))
 }
