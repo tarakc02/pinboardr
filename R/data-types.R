@@ -33,11 +33,24 @@ pb_date <- function(date) {
 
 pb_url <- function(url) url
 pb_yn <- function(val) {
-    assert_that(is.logical(val))
-    ifelse(val, "yes", "no")
+    if (is.null(val)) return(NULL)
+    assert_that(is.flag(val))
+    if (val) "yes" else "no"
 }
 
 yn_tf <- function(yn) {
     tf <- c(yes = TRUE, no = FALSE)
     unname(tf[yn])
+}
+
+pb_title <- function(title) {
+    if (is.null(title)) return(title)
+    assert_that(is.string(title), !is.na(title), nchar(title) <= 255)
+    title
+}
+
+pb_text <- function(text) {
+    if (is.null(text)) return(text)
+    assert_that(is.string(text), !is.na(text), nchar(text) <= 65536)
+    text
 }
