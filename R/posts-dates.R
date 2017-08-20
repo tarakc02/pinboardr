@@ -11,7 +11,6 @@ post_dates <- function(tags, auth_token = NULL) {
     geturl <- build_posts_url(
         "dates",
         tag = taglist,
-        format = format,
         auth_token = auth_token
     )
     raw_response <- GET_1_3s(httr::build_url(geturl))
