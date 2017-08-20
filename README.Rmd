@@ -17,3 +17,19 @@ knitr::opts_chunk$set(
 # pinboardr
 
 An R client application for the Pinboard API. Work in progress.
+
+## Usage
+
+So far the `posts` and `tags` endpoints described in the [pinboard documentation](https://pinboard.in/api/) have been implemented. 
+
+```{r}
+library(pinboardr)
+
+# see dates and counts of bookmarks with the "rstats" tag.
+rstats_bookmarks <- posts$dates(tags = "rstats")
+head(rstats_bookmarks)
+
+# available endpoints
+ls(posts)
+ls(tags)
+```
