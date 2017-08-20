@@ -32,32 +32,5 @@ get_posts <- function(
         auth_token = auth_token
     )
     raw_response <- GET_1_3s(httr::build_url(geturl))
-    posts_get_process(raw_response)
-}
-
-posts_get_process <- function(response) {
-    response_list <- process(response)
-    if (length(response_list) == 0L)
-        response_df <- data.frame(
-            href = character(),
-            description = character(),
-            extended = character(),
-            meta = character(),
-            hash = character(),
-            time = character(),
-            shared = character(),
-            toread = character(),
-            tags = character(),
-            stringsAsFactors = FALSE
-        )
-    else response_df <- response_list$posts
-
-    if (!"meta" %in% names(response_df))
-        response_df[["meta"]] <- ""
-
-    response_df$time <- lubridate::ymd_hms(response_df$time)
-    response_df$shared <- yn_tf(response_df$shared)
-    response_df$toread <- yn_tf(response_df$toread)
-
-    structure(response_df, class = c("pinboard_posts", "tbl_df", "tbl", class(response_df)))
+    posts_process(raw_response)
 }

@@ -31,6 +31,13 @@ pb_date <- function(date) {
     format(date, "%Y-%m-%d")
 }
 
+pb_datetime <- function(datetime) {
+    if (is.null(datetime)) return(NULL)
+    assert_that(is.time(datetime))
+    datetime <- as.POSIXlt(datetime, tz = "UTC")
+    format(datetime, "%Y-%m-%dT%H:%M:%SZ")
+}
+
 pb_url <- function(url) url
 pb_yn <- function(val) {
     if (is.null(val)) return(NULL)

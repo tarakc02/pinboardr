@@ -12,4 +12,5 @@ RoxygenNote: 6.0.1
 Imports: ratelimitr,
     httr,
     jsonlite,
-    lubridate
+    lubridate,
+    assertthat

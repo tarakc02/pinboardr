@@ -1,4 +1,10 @@
-post_dates <- function(tags, format = "json", auth_token = NULL) {
+#' Get a list of dates with the number of posts at each date.
+#'
+#' @param tags filter by up to three tags
+#' @param auth_token Your auth_token
+#'
+#' @export
+post_dates <- function(tags, auth_token = NULL) {
     taglist <- pb_tag(tags)
     if (taglength(taglist) > 3) stop("Only 3 tags allowed")
 

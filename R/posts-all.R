@@ -1,3 +1,13 @@
+#' Get all bookmarks
+#'
+#' @param tags filter by up to three tags
+#' @param start offset value (default is 0)
+#' @param results number of results to return. Default is all
+#' @param from return only bookmarks created after this time
+#' @param to return only bookmarks created before this time
+#' @param meta include a change detection signature for each bookmark
+#'
+#' @export
 all_posts <- function(
     tags = NULL,
     start = NULL,
@@ -9,8 +19,8 @@ all_posts <- function(
     tags = pb_tag(tags)
     if (taglength(tags) > 3L) stop("Only 3 tags allowed")
 
-    fromdt = pb_date(from)
-    todt = pb_date(to)
+    fromdt = pb_datetime(from)
+    todt = pb_datetime(to)
 
     url <- build_posts_url(
         "all",

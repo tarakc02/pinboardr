@@ -1,3 +1,8 @@
+#' Delete a bookmark
+#'
+#' @param url The url of the bookmark to delete
+#' @param auth_token Your auth_token
+#' @export
 delete_post <- function(
     url,
     auth_token = NULL

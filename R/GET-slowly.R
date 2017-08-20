@@ -8,7 +8,7 @@ GET_1_5m <- ratelimitr::limit_rate(
     ratelimitr::rate(n = 1, period = 300)
 )
 
-GET_1_3m <- ratelimitr::limit_rate(
+GET_1_1m <- ratelimitr::limit_rate(
     httr::GET,
-    ratelimitr::rate(n = 1, period = 180)
+    ratelimitr::rate(n = 1, period = 60)
 )

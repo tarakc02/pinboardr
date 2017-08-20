@@ -1,3 +1,12 @@
+#' List of popular tags and recommended tags for a given URL.
+#'
+#' Popular tags are tags used site-wide for the url; recommended tags are drawn from
+#' the user's own tags.
+#'
+#' @param url A URL
+#' @param auth_token Your auth_token
+#'
+#'  @export
 suggest <- function(url, auth_token = NULL) {
     url <- pb_url(url)
     request_url <- build_posts_url("suggest", url = url, auth_token = auth_token)

@@ -1,3 +1,8 @@
+#' Get a full list of tags along with the number of times they were used.
+#'
+#' @param auth_token Your auth_token
+#'
+#' @export
 get_tags <- function(auth_token = NULL) {
     url <- build_url("tags", "get", auth_token = auth_token)
     response <- GET_1_3s(httr::build_url(url))

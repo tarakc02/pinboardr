@@ -1,9 +1,21 @@
+#' Add a new bookmark
+#'
+#' @param url URL for the bookmark (required)
+#' @param title Title (required)
+#' @param tags Up to 100 tags
+#' @param timestamp If NULL, current time is used
+#' @param replace Replace any existing bookmark with this URL. Default is TRUE. If set to FALSE, will throw an error if bookmark exists
+#' @param shared Make bookmark public. Default is TRUE unless user has enabled the "save all bookmarks as private" user setting, in which case default is FALSE
+#' @param toread Marks the bookmark as unread. Default is FALSE
+#' @param auth_token Your auth_token
+#'
+#' @export
 add_post <- function(
     url,
     title,
     text = NULL,
     tags = NULL,
-    date = NULL,
+    timestamp = NULL,
     replace = NULL,
     shared = NULL,
     toread = NULL,
@@ -16,7 +28,7 @@ add_post <- function(
     text <- pb_text(text)
     tags <- pb_tag(tags)
     if (taglength(tags) > 100L) stop("Maximum of 100 tags allowed")
-    date <- pb_date(date)
+    date <- pb_datetime(timestamp)
     replace = pb_yn(replace)
     shared = pb_yn(shared)
     toread = pb_yn(toread)
