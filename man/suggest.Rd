@@ -9,9 +9,7 @@ suggest(url, auth_token = NULL)
 \arguments{
 \item{url}{A URL}
 
-\item{auth_token}{Your auth_token
-
- @export}
+\item{auth_token}{Your auth_token}
 }
 \description{
 Popular tags are tags used site-wide for the url; recommended tags are drawn from

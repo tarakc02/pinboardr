@@ -6,7 +6,7 @@
 #' @param url A URL
 #' @param auth_token Your auth_token
 #'
-#'  @export
+#' @export
 suggest <- function(url, auth_token = NULL) {
     url <- pb_url(url)
     request_url <- build_posts_url("suggest", url = url, auth_token = auth_token)
