@@ -7,7 +7,7 @@ An R client application for the Pinboard API. Work in progress.
 Usage
 -----
 
-So far the `posts` and `tags` endpoints described in the [pinboard documentation](https://pinboard.in/api/) have been implemented.
+So far the `posts` and `tags` endpoints described in the [pinboard documentation](https://pinboard.in/api/) have been implemented. See `?posts` or `?tags` for documentation of the individual functions.
 
 ``` r
 library(pinboardr)
